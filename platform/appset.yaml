@@ -5,10 +5,10 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/thschue/gitops-demo.git
+        repoURL: https://github.com/Follow1985/Chris-try-Day3.git
         revision: main
         files:
-          - path: demo/**/config.yaml
+          - path: platform/**/config.yaml
   template:
     metadata:
       name: '{{path.basename}}'
@@ -20,11 +20,11 @@ spec:
         chart: '{{ chart }}'
         helm:
           valueFiles:
-          - $values/demo/{{ path.basename }}/values.yaml
-      - repoURL: https://github.com/thschue/gitops-demo.git
+          - $values/platform/{{ path.basename }}/values.yaml
+      - repoURL: https://github.com/Follow1985/Chris-try-Day3.git
         targetRevision: main
-        path: demo/{{ path.basename }}
-      - repoURL: https://github.com/thschue/gitops-demo.git
+        path: platform/{{ path.basename }}
+      - repoURL: https://github.com/Follow1985/Chris-try-Day3.git
         targetRevision: main
         ref: values
       destination:
@@ -35,4 +35,4 @@ spec:
           selfHeal: true
         syncOptions:
           - CreateNamespace=true
-          - ServerSideApply={{ serverSideApply }}
+          - ServerSideApply=true
